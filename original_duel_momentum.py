@@ -20,7 +20,7 @@ def return_rate(numeric_list):
 result_original: dict[str, float] = {}
 
 for i in stock_list:
-    df = pd.read_csv('2022_12/' + i + '.csv')
+    df = pd.read_csv('2023_02/' + i + '.csv')
     df['numeric'] = df['변동 %'].map(numeric)
     return_rate_ = return_rate(list(df['numeric']))
     result_original[i[:3]] = return_rate_
@@ -28,8 +28,8 @@ for i in stock_list:
 print(result_original)
 
 """
-{'SPY': 0.8052933499889806, 
-'EFA': 0.8343050632881822, 
-'BIL': 1.0003965255946112, 
-'AGG': 0.850188301014164}
+{'SPY': 0.9076606612372438, 
+'EFA': 0.9471646905173123, 
+'BIL': 1.0031976358662755, 
+'AGG': 0.8818070289037101}
 """

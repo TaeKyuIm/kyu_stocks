@@ -10,7 +10,7 @@ def momentum_score(data):
 
 result_vaa = {}
 for i in stock_list:
-    df = pd.read_csv('2022_12/'+i+'.csv')
+    df = pd.read_csv('2023_01/'+i+'.csv')
     ticker = i[:3]
     score = momentum_score(df)
     result_vaa[ticker] = score
