@@ -7,10 +7,12 @@ def get_52price(ticker, start_date, end_date):
     # 52주 가격 정보 얻음.
     df = stock.get_market_ohlcv(start_date, end_date, ticker, adjusted = True)
     df.reset_index(inplace=True)
-    df['52_week_high'] = df['고가'].rolling(window='365D').max()
-    df['52_week_low'] = df['저가'].rolling(window='365D').min()
+    df['날짜'] = pd.to_datetime(df['날짜'])
+    weeks_52 = 52*5
+    df['52_week_high'] = df['고가'].rolling(window=weeks_52, min_periods=1).max()
+    df['52_week_low'] = df['저가'].rolling(window=weeks_52, min_periods=1).min()
     
-    return df[['52_week_high', '52_week_low']]
+    return df
 
 
 def get_rapid_ticker(start_date, end_date, number=10):
